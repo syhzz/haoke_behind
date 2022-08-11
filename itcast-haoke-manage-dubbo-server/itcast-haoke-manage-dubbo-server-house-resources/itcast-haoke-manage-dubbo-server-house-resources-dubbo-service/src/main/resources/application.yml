@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: itcast-haoke-manage-dubbo-server-house-resources
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.111.132:3306/haoke?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
+    username: root
+    password: root
+dubbo:
+  scan:
+    basePackages: cn.itcast.haoke.dubbo.server.api
+  application:
+    name: dubbo-provider-house-resources
+  protocol:
+    name: dubbo
+    port: 20880
+  registry:
+    address:  zookeeper://192.168.111.132:2181
+    client: zkclient
+    group: dubbo
