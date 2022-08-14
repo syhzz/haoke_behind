@@ -1,15 +1,13 @@
 package cn.itcast.haoke.dubbo.api.controller;
 
+import cn.itcast.haoke.dubbo.api.pojo.TableResult;
 import cn.itcast.haoke.dubbo.api.service.HouseResourcesService;
 import cn.itcast.haoke.dubbo.server.pojo.HouseResources;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("house/resources")
@@ -26,5 +24,10 @@ public class HouseResourcesController {
         }
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
+
+    public ResponseEntity<TableResult> list(HouseResources houseResources, @RequestParam(name = "currentPage", defaultValue = "1") Integer currentPage
+            , @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
+        return ResponseEntity.ok(this.houseResourcesService.queryList(houseResources, currentPage, pageSize));
     }
 }
