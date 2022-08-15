@@ -19,9 +19,12 @@ public class HouseResourcesService {
         return i == 1;
     }
 
-    public Object queryList(HouseResources houseResources, Integer currentPage, Integer pageSize) {
-        PageInfo<HouseResources> pageInfo = this.apiHouseResourceService.queryHouseReourcesList(currentPage, pageSize, houseResources);
+    public TableResult queryList(HouseResources houseResources, Integer currentPage, Integer pageSize) {
+        PageInfo<HouseResources> pageInfo = this.apiHouseResourceService.queryHouseResourcesList(currentPage, pageSize, houseResources);
         return new TableResult(pageInfo.getRecords(), new Pagination(currentPage, pageSize, pageInfo.getTotal()));
     }
 
+    public HouseResources queryHouseResourcesById(Long id) {
+        return this.apiHouseResourceService.queryHouseResourcesById(id);
+    }
 }

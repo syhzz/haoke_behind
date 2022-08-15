@@ -26,6 +26,8 @@ public class HouseResourcesController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
+    @PostMapping("/list")
+    @ResponseBody
     public ResponseEntity<TableResult> list(HouseResources houseResources, @RequestParam(name = "currentPage", defaultValue = "1") Integer currentPage
             , @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
         return ResponseEntity.ok(this.houseResourcesService.queryList(houseResources, currentPage, pageSize));
