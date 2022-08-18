@@ -4,7 +4,7 @@ import cn.itcast.haoke.dubbo.api.pojo.Pagination;
 import cn.itcast.haoke.dubbo.api.pojo.TableResult;
 import cn.itcast.haoke.dubbo.server.api.ApiHouseResourceService;
 import cn.itcast.haoke.dubbo.server.pojo.HouseResources;
-import cn.itcast.haoke.dubbo.server.pojo.PageInfo;
+import cn.itcast.haoke.dubbo.pojo.PageInfo;
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +26,9 @@ public class HouseResourcesService {
 
     public HouseResources queryHouseResourcesById(Long id) {
         return this.apiHouseResourceService.queryHouseResourcesById(id);
+    }
+
+    public boolean update(HouseResources houseResources) {
+        return this.apiHouseResourceService.updateHouseResources(houseResources);
     }
 }

@@ -6,6 +6,7 @@ type HaokeQuery
 {
     HouseResources(id:Long):HouseResources
     HouseResourcesList(houseResources:HouseResources, page:Int, pageSize:Int):TableResult
+    IndexAdList:IndexAdResult
 }
 
 type HouseResources
@@ -43,4 +44,11 @@ type Pagination{
     current:Int
     pageSize:Int
     total:Int
+}
+
+type IndexAdResult{
+    list:[IndexAdResultData]
+}
+type IndexAdResultData{
+    original:String
 }

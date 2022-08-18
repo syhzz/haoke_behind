@@ -32,4 +32,14 @@ public class HouseResourcesController {
             , @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
         return ResponseEntity.ok(this.houseResourcesService.queryList(houseResources, currentPage, pageSize));
     }
+
+    @PutMapping
+    @ResponseBody
+    public ResponseEntity<Void> update(@RequestBody HouseResources houseResources) {
+        boolean update = this.houseResourcesService.update(houseResources);
+        if (update) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
 }
