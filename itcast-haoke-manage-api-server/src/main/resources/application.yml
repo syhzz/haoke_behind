@@ -1,6 +1,19 @@
 spring:
   application:
     name: itcast-haoke-manage-api-server
+  redis:
+    jedis:
+      pool:
+        max-wait: 5000
+        max-idle: 100
+        min-idle: 10
+    timeout: 10
+    cluster:
+      nodes:
+        - 192.168.111.132:6379
+        - 192.168.111.132:6380
+        - 192.168.111.132:6381
+      max-redirects: 5
 server:
   port: 18080
 
@@ -10,3 +23,4 @@ dubbo:
   registry:
     address: zookeeper://192.168.111.132:2181
     client: zkclient
+
